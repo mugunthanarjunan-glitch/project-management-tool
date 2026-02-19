@@ -97,9 +97,10 @@ button:hover {
 /* RIGHT SIDE IMAGE */
 .right {
     width: 50%;
+    margin: 4px;
     background: url("right.webp") no-repeat center;
     background-size: cover;
-    
+    box-shadow: 0 4px 8px rgba(23, 1, 1, 0.1);
     border-radius: 15px;
 }
 
