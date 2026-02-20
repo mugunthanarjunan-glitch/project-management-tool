@@ -3,6 +3,8 @@ const express = require("express")
 const cors = require("cors")
 const mongoose = require("mongoose")
 const authROutes = require("./routes/authRoutes")
+const projectRoutes = require("./routes/projectRoutes")
+
 
 const app = express()
 
@@ -15,6 +17,7 @@ mongoose.connect(process.env.MONGO_URI)
     .catch(err => console.log(err))
 
 app.use("/auth",authROutes)
+app.use("/project",projectRoutes)
 
 const PORT=7000
 
