@@ -21,4 +21,11 @@ router.post("/create",projectCheck,async (req,res) => {
     }
 })
 
+router.get("/list",projectCheck,async (req,res)=>{
+    const projectlist = await Project.find({createdBy:req.user.userId})
+    
+    res.json(projectlist)
+})
+
+
 module.exports = router
