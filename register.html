@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Register Form</title>
+    <link rel="stylesheet" href="register.css">
+</head>
+
+<body>
+
+<div class="form">
+    <h1>Register Form</h1>
+
+    <form onsubmit="handleSubmit(event)">
+        <table>
+            <tr>
+                <th>Name</th>
+                <th><input type="text" placeholder="Enter Name"required></th>
+            </tr>
+
+            <tr>
+                <th>Last Name</th>
+                <th><input type="text" placeholder="Enter Last Name"></th>
+            </tr>
+
+            <tr>
+                <th>Team Name</th>
+                <th><input type="text" placeholder="Enter Team Name"></th>
+            </tr>
+
+            <tr>
+                <th>Team ID</th>
+                <th><input type="text"placeholder="Enter Team ID"></th>
+            </tr>
+
+            <tr>
+                <th>Email</th>
+                <th><input type="email" placeholder="Enter Email"required></th>
+            </tr>
+
+            <tr>
+                <th>Password</th>
+                <th><input type="password" class="txt" placeholder="Enter Password"required></th>
+            </tr>
+
+            <tr>
+                <th>Re-Enter Password</th>
+                <th><input type="password" class="retxt" placeholder="Re-enter Password" required></th>
+            </tr>
+        </table>
+
+        <p class="para"></p>
+
+        <button type="submit">Submit</button>
+    </form>
+</div>
+
+<script>
+let pass = document.querySelector(".txt");
+let repa = document.querySelector(".retxt");
+let res  = document.querySelector(".para");
+
+function handleSubmit(event) {
+    event.preventDefault();
+
+    let pwd = pass.value;
+    let cpwd = repa.value;
+
+    
+    pass.style.border = "";
+    repa.style.border = "";
+
+    if (pwd.length < 8) {
+        res.innerHTML = "Password must be at least 8 characters";
+        res.style.color = "red";
+        pass.style.border = "1px solid red";
+        repa.style.border = "1px solid red";
+        return;
+    }
+
+    if (pwd !== cpwd) {
+        res.innerHTML = "Passwords do not match";
+        res.style.color = "red";
+        pass.style.border = "1px solid red";
+        repa.style.border = "1px solid red";
+        return;
+    }
+    if(pwd===cpwd){
+        res.innerHTML = "Good! Strong password ✔";
+        res.style.color = "green";
+        pass.style.border = "1px solid green";
+        repa.style.border = "1px solid green";
+    }
+
+    alert("Form submitted successfully!");
+}
+</script>
+
+</body>
+</html>
