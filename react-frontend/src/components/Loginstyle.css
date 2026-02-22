@@ -1,0 +1,10 @@
+.Login-form{
+    display: flex;
+    flex-direction: column;
+    gap:10px;
+    width: 50%;
+    border: none;
+    background-color: lightblue;
+    border-radius: 15px;
+    padding: 20px;
+}
