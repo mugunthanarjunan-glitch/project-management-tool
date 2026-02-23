@@ -4,6 +4,8 @@ import Home from "./components/Home";
 import Register from "./components/Register";
 import Dashboard from "./components/Dashboard";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import ProtectedRoute from "./components/Protectedroute";
+
 
 function App() {
   return (
@@ -12,7 +14,8 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/dashboard" element={<Dashboard />} />
+
+        <Route path="/dashboard"element={<ProtectedRoute><Dashboard/></ProtectedRoute>} />
       </Routes>
     </BrowserRouter>
   );

@@ -26,7 +26,10 @@ function Login() {
     try{
       const res = await axios.post("http://localhost:7000/auth/login",formdata)
       alert(res.data.message)
-      navigator("/dashboard")
+      if(res.data.token){
+        localStorage.setItem("token",res.data.token)
+        navigator("/dashboard")
+      }
     }
     catch(err){
       console.log(err)
