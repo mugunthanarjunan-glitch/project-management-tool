@@ -50,3 +50,9 @@
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
 }
 
+.Project-cards{
+   display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 20px;
+    overflow: hidden;
+}
