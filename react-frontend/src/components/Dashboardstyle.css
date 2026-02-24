@@ -50,9 +50,20 @@
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
 }
 
-.Project-cards{
-   display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    gap: 20px;
-    overflow: hidden;
+.Project-cards {
+  display: flex;
+  justify-content: center;      
+  align-items: center;          
+  gap: 20px;                   
+  flex-wrap: wrap;              
+  padding: 20px;
+}
+
+.card {
+  background: white;
+
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  transition: 0.3s ease;
 }
