@@ -67,3 +67,28 @@
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
   transition: 0.3s ease;
 }
+.member-search {
+  position: relative;
+  width: 250px;
+}
+
+.dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background: white;
+  border: 1px solid #ccc;
+  max-height: 150px;
+  overflow-y: auto;
+  z-index: 999;
+}
+
+.dropdown-item {
+  padding: 8px;
+  cursor: pointer;
+}
+
+.dropdown-item:hover {
+  background: #f2f2f2;
+}

@@ -21,6 +21,7 @@ function Dashboard() {
         }})
         setprojectlist(res.data.projectlist)
         
+        
       }
       catch(err){
         console.log(err)
@@ -63,6 +64,7 @@ function Dashboard() {
                 <h3>Project Name: {Element.projectname}</h3>
                 <p>Created By: {Element.createdBy.name}</p>
                 <p>Created At: {Element.startAt.split("T")[0]}</p><p> DeadLine: {new Date(Element.deadLine).toISOString().split("T")[0]}</p>
+                <p>Members{}</p>
                 <p>Status: {Element.statusOfproject}</p>
               </div>
             )))

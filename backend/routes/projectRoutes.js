@@ -8,9 +8,9 @@ const router = express.Router()
 
 router.post("/create",projectCheck,async (req,res) => {
     try{
-        const {projectname,statusOfproject,deadLine} = req.body
+        const {projectname,members,statusOfproject,deadLine} = req.body
         
-        const proinfo = await Project.create({projectname,statusOfproject,deadLine,createdBy:req.user.userId})
+        const proinfo = await Project.create({projectname,members,statusOfproject,deadLine,createdBy:req.user.userId})
         
         res.json(proinfo)
     }
@@ -22,6 +22,23 @@ router.post("/create",projectCheck,async (req,res) => {
 router.get("/list",projectCheck,async (req,res)=>{
     const projectlist = await Project.find({createdBy:req.user.userId}).populate("createdBy","name email")
     res.json({projectlist})
+})
+
+router.get("/search-user",projectCheck,async (req,res)=>{
+    try{
+        const {email}=req.query
+
+        if(!email){
+            return res.status(400).json({message:"Email require"})
+        }
+        const users = await User.find({
+            email:{$regex:email,$options:"i"}
+        }).select("name email").limit(5)
+        res.json(users)
+    }
+    catch(err){
+        res.status(500).json({message:err.message})
+    }
 })
 
 router.get("/:id",projectCheck,async (req,res)=>{
@@ -40,6 +57,8 @@ router.get("/:id",projectCheck,async (req,res)=>{
         res.status(500).json({message:err.message})
     }
 })
+
+
 
 
 module.exports = router

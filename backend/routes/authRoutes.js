@@ -3,7 +3,6 @@ const bcrypt = require("bcrypt")
 const User = require("../models/User")
 const jwt = require("jsonwebtoken")
 const router = express.Router()
-
 router.post("/register", async (req,res)=>{
     const {name,email,password}=req.body
     const hashedpassword = await bcrypt.hash(password,10)
@@ -36,5 +35,6 @@ router.post("/login", async (req,res) =>{
     res.json({message:"Login successful","token":token})
 
 })
+
 
 module.exports = router
