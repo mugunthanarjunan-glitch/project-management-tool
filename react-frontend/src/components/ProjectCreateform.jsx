@@ -60,7 +60,7 @@ function ProjectCreateform({ closeform }) {
   return (
     <form method="post" onSubmit={handleSubmit}>
       Project Name{" "}
-      <input type="text" name="projectname" onChange={handleChange} />
+      <input type="text" name="projectname" onChange={handleChange} required/>
       <div className="member-search">
   <input
     type="text"
@@ -105,7 +105,7 @@ function ProjectCreateform({ closeform }) {
         <option value="In Progress">In progress</option>
         <option value="Completed">Completed</option>
       </select>
-      DeadLine <input type="date" name="deadLine" onChange={handleChange} />
+      DeadLine <input type="date" name="deadLine" onChange={handleChange} required />
       <button type="submit">Create</button>
     </form>
   );

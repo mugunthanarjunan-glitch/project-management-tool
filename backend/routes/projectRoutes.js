@@ -20,8 +20,16 @@ router.post("/create",projectCheck,async (req,res) => {
 })
 
 router.get("/list",projectCheck,async (req,res)=>{
-    const projectlist = await Project.find({createdBy:req.user.userId}).populate("createdBy","name email")
-    res.json({projectlist})
+    try{
+        const userId=req.user.userId
+        const projectlist = await Project.find({$or:[{createdBy:userId},{members:userId}]}).populate("createdBy","name email").populate("members","name email")
+
+        res.json({projectlist})
+
+    }
+    catch(err){
+        res.status(500).json({message:err.message})
+    }
 })
 
 router.get("/search-user",projectCheck,async (req,res)=>{
@@ -43,10 +51,12 @@ router.get("/search-user",projectCheck,async (req,res)=>{
 
 router.get("/:id",projectCheck,async (req,res)=>{
     try{
+        const userId =req.user.userId
         const infos= await Project.findOne({
             _id:req.params.id,
-            createdBy:req.user.userId
-        }).populate("createdBy","name email")
+            $or:[{
+                createdBy:userId},{members:userId}]
+        }).populate("createdBy","name email").populate("members","name email")
 
         if (!infos){
             return res.status(404).json({message:"Project not found"})

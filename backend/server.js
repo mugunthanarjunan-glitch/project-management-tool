@@ -4,7 +4,7 @@ const cors = require("cors")
 const mongoose = require("mongoose")
 const authROutes = require("./routes/authRoutes")
 const projectRoutes = require("./routes/projectRoutes")
-
+const taskRoutes = require("./routes/taskRoute")
 
 const app = express()
 
@@ -18,6 +18,7 @@ mongoose.connect(process.env.MONGO_URI)
 
 app.use("/auth",authROutes)
 app.use("/project",projectRoutes)
+app.use("/task",taskRoutes)
 
 const PORT=7000
 
