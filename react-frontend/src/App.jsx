@@ -4,7 +4,7 @@ import Home from "./components/Home";
 import Register from "./components/Register";
 import Dashboard from "./components/Dashboard";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import ProtectedRoute from "./components/Protectedroute";
+import ProtectedRoute from "./components/ProtectedRoute"
 import ProjectDetail from "./components/ProjectDetail";
 
 
